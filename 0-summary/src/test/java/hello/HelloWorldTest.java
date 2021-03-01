@@ -27,7 +27,7 @@ public class HelloWorldTest {
       boolean b = true;
       int[] a1 = new int[9];
       int[] a2 = new int[2];
-      Object o = new Object();
+      // Object o = new Object();
 
       // create test arguments
       // cal methods to test
@@ -45,6 +45,7 @@ public class HelloWorldTest {
 
       // init
       Object init = this.initializeFh();
+      System.out.println(init);
     }
     
     private Object initializeFh() {
