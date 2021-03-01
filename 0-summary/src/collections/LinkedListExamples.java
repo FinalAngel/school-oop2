@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CollectionExamples {
+public class LinkedListExamples {
   
-  public CollectionExamples() {
+  public LinkedListExamples() {
     /**
      * Use methods like
      * add, addAll, clear, contains, containsAll...
