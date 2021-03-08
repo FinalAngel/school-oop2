@@ -2,10 +2,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class MapsExamples {
+public class HashMapExamples {
   
-  public MapsExamples() {
+  public HashMapExamples() {
     mapsExamples();
+    modifyMaps();
   }
 
   private void mapsExamples() {
@@ -24,6 +25,7 @@ public class MapsExamples {
     }
 
     // to iterate use entrySet to generate a list on the fly from a map
+    // cause map does not inherit from collections
     Set<Map.Entry<String, Double>> entries = salary.entrySet();
     // operations on the entrySet will affect the map itself!!!
     for (Map.Entry<String, Double> entry : entries) {
@@ -31,6 +33,25 @@ public class MapsExamples {
       double lohn = entry.getValue();
       System.out.println(name + ": " + lohn);
     }
+  }
+
+  private void modifyMaps() {
+    Map<String, Double> salary = new HashMap<>();
+    salary.put("Max", 80000.0);
+    salary.put("Muster", 120000.0);
+
+    salary.get("Max");
+
+    Set<Map.Entry<String, Double>> entries = salary.entrySet();
+
+    for (Map.Entry<String, Double> entry : entries) {
+      String name = entry.getKey();
+      name.contains("Max");
+    }
+
+    Set<String> namen = salary.keySet();
+    // not supported: namen.add("Peter")
+    System.out.println(namen);
   }
 
 }

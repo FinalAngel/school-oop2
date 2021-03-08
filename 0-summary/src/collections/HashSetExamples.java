@@ -2,20 +2,19 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class SetsExamples {
+public class HashSetExamples {
   // it can be slow to find a specific element (contains)
   private int age;
   private int iq;
   private String name;
     
-  public SetsExamples() {
+  public HashSetExamples() {
     // similar to a "menge"
     Number[] smallPrimes = { 2, 3, 5, 7 };
     System.out.println(smallPrimes);
 
     hashSetExample();
-    scannerExample();
-    treeSetExample();
+    withScanner();
 
     /**
      * a ∪ b    = a.addAll(b)
@@ -54,7 +53,7 @@ public class SetsExamples {
     // or autogenerate using 
   }
 
-  private void scannerExample() {
+  private void withScanner() {
     Scanner scanner = new Scanner(System.in);
     Set<String> words = new HashSet<>();
     while (scanner.hasNext()) {
@@ -73,7 +72,5 @@ public class SetsExamples {
       }
     }
   }
-
-  private void treeSetExample() {}
 
 }

@@ -12,6 +12,9 @@ Changelog
   garget/ (contains kompiled files)
   pom.xml
   ```
+* [01.03.2021] Added collections summary
+* [08.03.2021] Restructured and added ArrayListExample, Overview
+
 
 Maven
 -----
