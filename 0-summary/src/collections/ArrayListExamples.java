@@ -65,7 +65,7 @@ public class ArrayListExamples {
      * List<Student> students = ...
      * Map<Student, Double> examGrades = ...
      * 
-     * Collections.sort(students, new Comperator<Student>() {
+     * Collections.sort(students, new Comparator<Student>() {
      *  public int compare(Studend first, Student second) {
      *    double firstGrade = examGrades.get(first);
      *    double secondGrade = examGrades.get(second);
