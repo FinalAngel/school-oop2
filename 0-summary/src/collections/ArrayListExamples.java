@@ -1,12 +1,16 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class ArrayListExamples {
   
   public ArrayListExamples() {
     listOperations();
+    listLoops();
   }
 
   private void listOperations() {
@@ -32,7 +36,7 @@ public class ArrayListExamples {
     List<String> movies = new ArrayList<>(List.of("The Lord of the Rings", "Star Wars", "Inception"));
     // this works perfectly for a normal list
     Collections.sort(movies);
-    // or Arrays.sort()
+    Arrays.sort(movies.toArray());
 
     /**
      * though it is more complicated when using classes, what should I sort for?
@@ -43,36 +47,38 @@ public class ArrayListExamples {
     if (movies.get(0).compareTo(movies.get(1)) < 0) {
       System.out.println("ist kleiner als");
     }
+  }
 
-    /**
-     * Comparator<T> can be additionally used
-     * public int compare(T first, T second)
-     * implemented in "DateComparator.java"
-     * 
-     * or quick creation as anonymous function
-     * 
-     * Comparator<Module> comp = new Comparator<Module>() {
-     *  public int compare(Module first, Module second) {
-     *    return first.getCredits() - second.getCredits();
-     *  }
-     * }
-     * Collections.sort(Date, comp); // can also be inline replaced in comp
-     */
+  private void listLoops() {
+    List<Integer> list = new ArrayList<>(List.of(0, 1, 2));
 
-    /**
-     * Compare data from data of unrelated sources
-     * 
-     * List<Student> students = ...
-     * Map<Student, Double> examGrades = ...
-     * 
-     * Collections.sort(students, new Comparator<Student>() {
-     *  public int compare(Studend first, Student second) {
-     *    double firstGrade = examGrades.get(first);
-     *    double secondGrade = examGrades.get(second);
-     *    return Double.compare(firstGrade, secondGrade);
-     *  }
-     * })
-     */
+    // direct removal
+    for (int i = 0; i < list.size(); i++) {
+      list.remove(i);
+    }
+
+    // remove every second element
+    int position = 1;
+    Iterator<Integer> iter = list.iterator();
+
+    while (iter.hasNext()) {
+      iter.next();
+
+      if (position % 2 == 0) {
+        iter.remove();
+      }
+
+      position++;
+    }
+
+    // inline application
+    for (Iterator<Integer> i = list.iterator(); i.hasNext();) {
+    }
+  }
+  
+  // helper
+  public static int mapCountDuplicates(Map<String, Integer> map) {
+      return map.values().size() - new HashSet<>(map.values()).size();
   }
 
 }

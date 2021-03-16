@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Generics<E extends Number, T> {
+public class GenericsExample<E extends Number, T> {
   private final List<E> list;
   private final E number;
 
-  public Generics(E number) {
+  public GenericsExample(E number) {
     this.number = number;
     this.list = new ArrayList<E>();
   }
