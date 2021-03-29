@@ -41,6 +41,11 @@ public class HashSetExamples {
     // .hashCode()
     // this is important when creating own objects/classes, as you have
     // to implement the hashCode methods yourself!!!
+
+    // run foreach and add to new object
+    Set<String> tmp = new HashSet<String>();
+    System.out.println(tmp);
+    // multiList.forEach(tmp::addAll);
   }
 
   public int hashCode() {
