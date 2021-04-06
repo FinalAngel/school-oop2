@@ -63,6 +63,8 @@ public class LambdaExamples {
     list.forEach(x -> System.out.println(x));
     list.forEach(System.out::println);
 
+    list.replaceAll(item -> item + " blah");
+
     // sample implementation with a method
     repeat(10, () -> System.out.println("Hello world"));
     // with a passable param

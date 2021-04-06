@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -51,6 +52,17 @@ public class StreamsExample {
     Stream<String> scores = results.stream()
       .flatMap(r -> Stream.of(r.split(":")));
     System.out.println(scores.collect(Collectors.toList()));
+
+    // collect
+    results.stream().collect(Collectors.toMap(s -> s, s -> 1, Integer::sum));
+    // alternative
+    // Map<String, Integer> frequencies = new HashMap<>();
+    // words.forEach(word -> frequencies.merge(word, 1, (string, integer) -> frequencies.get(word) + 1));
+
+    // take while matches and return values
+    results.stream()
+      .takeWhile(r -> r == "3:0")
+      .collect(Collectors.toList());
   }
 
   public static void groupingBy() {
@@ -98,6 +110,10 @@ public class StreamsExample {
     // or add min/max
     // .min(comparing(...))
     // .max(comparing(...))
+
+    // sorting
+    // Collections.sort(list, Comparator.comparing(Person::getLastName)
+    //   .thenComparing(Person::getFirstName));
   }
 
   public static void primitiveStream() {
@@ -109,6 +125,17 @@ public class StreamsExample {
 
     IntStream ints3 = IntStream.rangeClosed(0, 100); // 0 to 100
     System.out.println(ints3);
+  }
+
+  public static Stream<String> anonymize(Stream<String> names, Set<String> critical) {
+    return names
+        .map(name -> {
+            if (critical.contains(name)) {
+                return "?".repeat(name.length());
+            } else {
+                return name;
+            }
+        });
   }
   
 }
