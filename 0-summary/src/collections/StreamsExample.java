@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -56,8 +57,19 @@ public class StreamsExample {
     // collect
     results.stream().collect(Collectors.toMap(s -> s, s -> 1, Integer::sum));
     // alternative
-    // Map<String, Integer> frequencies = new HashMap<>();
-    // words.forEach(word -> frequencies.merge(word, 1, (string, integer) -> frequencies.get(word) + 1));
+    List<String> words = List.of("Hello", "World", "Word");
+    Map<String, Integer> frequencies = new HashMap<>();
+    for (String word : words) {
+      if (!frequencies.containsKey(word)) {
+        frequencies.put(word, 1); // first two params in merge
+      } else {
+        frequencies.put(word, frequencies.get(word) + 1); // lambda in merge
+      }
+    }
+    // or in super short use merge
+    words.forEach(word -> frequencies.merge(
+      word, 1, (string, integer) -> frequencies.get(word) + 1)
+    );
 
     // take while matches and return values
     results.stream()
@@ -93,16 +105,17 @@ public class StreamsExample {
     countries.add(new Country());
     countries.add(new Country());
 
-    // bad examples
-    // List<Country> sorted = countries.stream()
-    //   .sorted((c1, c2) -> c1.getArea().compareTo(c2.getArea()))
-    //   .collect(Collectors.toList());
-
-    // use this
+    // bad example
     List<Country> sorted = countries.stream()
-      .sorted(Comparator.comparing(Country::getArea))
+      .sorted((c1, c2) -> c1.getArea().compareTo(c2.getArea()))
       .collect(Collectors.toList());
     System.out.println(sorted);
+
+    // use this
+    List<Country> sorted2 = countries.stream()
+      .sorted(Comparator.comparing(Country::getArea))
+      .collect(Collectors.toList());
+    System.out.println(sorted2);
 
     // reverse order:
     // .sorted(reverseOrder(comparing(...)))
@@ -136,6 +149,16 @@ public class StreamsExample {
                 return name;
             }
         });
+  }
+
+  public static void main(String[] args) {
+    Map<Integer, List<String>> groups = Stream.of("Peter Müller", "Patrick Hauser", "Manuel Schnell")
+      .collect(Collectors.groupingBy(String::length));
+
+    // {12=[Peter Müller], 14=[Patrick Hauser, Manuel Schnell]}
+    System.out.println(groups);
+
+    groups.values().stream().forEach(System.out::println);
   }
   
 }
