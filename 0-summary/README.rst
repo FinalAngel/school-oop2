@@ -1,14 +1,6 @@
 Summary Process
 ===============
 
-Changelog
----------
-
-* [22.02.2021] Added JUnit & Maven build tool
-* [01.03.2021] Added collections summary
-* [08.03.2021] Restructured and added ArrayListExample, Overview
-* [15.03.2021] Added Generics examples
-
 
 Maven
 -----
